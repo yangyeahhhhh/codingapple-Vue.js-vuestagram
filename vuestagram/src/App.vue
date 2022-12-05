@@ -9,6 +9,7 @@
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
+  <h4>안녕 {{ $store.state.name }}</h4>
 
   <Container @write="작성한글 = $event" :게시물="게시물" :step="step" :이미지="이미지"/>
 
@@ -44,8 +45,14 @@ export default {
       더보기: 0,
       step: 0,
       이미지: '',
-      작성한글: ''
+      작성한글: '',
+      선택한필터 : '',
     };
+  },
+  mounted(){
+    this.emitter.on('박스클릭함', (a)=>{
+      this.선택한필터 = a
+    })
   },
   components: {
     Container,
@@ -60,7 +67,7 @@ export default {
         date: "May 15",
         liked: false,
         content: this.작성한글,
-        filter: "perpetua",
+        filter: this.선택한필터,
       };
       this.게시물.unshift(내게시물);
       this.step = 0;
