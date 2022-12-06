@@ -9,7 +9,11 @@
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
-  <h4>안녕 {{ $store.state.name }}</h4>
+
+  <p>{{likes}}</p>
+  <button @click="like()">좋아요</button>
+  <p>{{ $store.state.more }}</p>
+  <button @click="$store.dispatch('getData')">더보기버튼</button>
 
   <Container @write="작성한글 = $event" :게시물="게시물" :step="step" :이미지="이미지"/>
 
@@ -36,6 +40,7 @@
 import Container from "./components/ContainerView.vue";
 import postdata from "./assets/postdata.js";
 import axios from 'axios'
+import {mapState, mapMutations} from 'vuex'
 
 export default {
   name: "App",
@@ -49,6 +54,9 @@ export default {
       선택한필터 : '',
     };
   },
+  computed: {
+    ...mapState(['likes', '좋아요눌렀니'])
+  },
   mounted(){
     this.emitter.on('박스클릭함', (a)=>{
       this.선택한필터 = a
@@ -58,6 +66,7 @@ export default {
     Container,
   },
   methods: {
+    ...mapMutations([ 'like', 'setMore' ]),
     publish(){
       var 내게시물 = {
         name: "Yang yewon",
