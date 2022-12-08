@@ -22,11 +22,16 @@
   </div>
   </div>
   </div>
+
+  <div v-if="step == 3">
+    <MyPage :one="1" :two="2"></MyPage>
+  </div>
 </template>
 
 <script>
 import Post from "./PostView.vue";
 import FilterBox from './FilterBoxView.vue'
+import MyPage from './MyPage.vue'
 
 export default {
   data(){
@@ -45,6 +50,7 @@ export default {
   components: {
     Post,
     FilterBox,
+    MyPage
   },
   props: {
     게시물: Array,

@@ -10,14 +10,14 @@
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <p>{{likes}}</p>
+  <!-- <p>{{likes}}</p>
   <button @click="like()">좋아요</button>
   <p>{{ $store.state.more }}</p>
   <button @click="$store.dispatch('getData')">더보기버튼</button>
 
-  <Container @write="작성한글 = $event" :게시물="게시물" :step="step" :이미지="이미지"/>
+  <button @click="more">더보기</button> -->
 
-  <button @click="more">더보기</button>
+  <Container @write="작성한글 = $event" :게시물="게시물" :step="step" :이미지="이미지"/>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -48,7 +48,7 @@ export default {
     return {
       게시물: postdata,
       더보기: 0,
-      step: 0,
+      step: 3,
       이미지: '',
       작성한글: '',
       선택한필터 : '',
