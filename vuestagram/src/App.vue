@@ -48,7 +48,7 @@ export default {
     return {
       게시물: postdata,
       더보기: 0,
-      step: 3,
+      step: 0,
       이미지: '',
       작성한글: '',
       선택한필터 : '',
